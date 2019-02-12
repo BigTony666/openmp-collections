@@ -14,31 +14,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main (int argc, char *argv[]) 
+int main(int argc, char *argv[])
 {
-int nthreads, tid;
+  int nthreads, tid;
 
 /* Fork a team of threads giving them their own copies of variables */
 #pragma omp parallel private(nthreads, tid)
   {
 
-  /* Obtain thread number */
-  tid = omp_get_thread_num();
-  printf("Hello World from thread = %d\n", tid);
+    /* Obtain thread number */
+    tid = omp_get_thread_num();
+    printf("Hello World from thread = %d\n", tid);
 
-  if (tid == 0) 
+    if (tid == 0)
     {
-    nthreads = 5;
-    printf("Number of threads = %d\n", nthreads);
+      nthreads = 5;
+      printf("Number of threads = %d\n", nthreads);
     }
-  /* Only master thread does this */
-  if (tid == 1) 
+    /* Only master thread does this */
+    if (tid == 1)
 
     {
-    nthreads = omp_get_num_threads();
-    printf("Number of threads = %d\n", nthreads);
+      nthreads = omp_get_num_threads();
+      printf("Number of threads = %d\n", nthreads);
     }
 
-  }  /* All threads join master thread and disband */
-
+  } /* All threads join master thread and disband */
 }
