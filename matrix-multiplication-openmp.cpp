@@ -1,3 +1,14 @@
+/**********************************
+ * DESCRIPTION: A program to do the parallel matrix multiplication by using OpenMP
+ *
+ * Author: Kejie Zhang
+ * LAST UPDATED: 02/13/2019
+ *
+ * USAGE: g++ matrix-multiplication-openmp.cpp -fopenmp -std=c++11 -o matrix-multiplication-openmp
+ * 
+ * USEFUL REFERENCE:
+ *    -> OpenMP: https://computing.llnl.gov/tutorials/openMP/
+**********************************/
 #include <iostream>
 #include <vector>
 #include <time.h>
@@ -114,7 +125,6 @@ int main() {
     int sum = 0;
 #pragma omp parallel shared(X, Y, result) private(i, j)
     {
-        cout << "Number of threads: " << omp_get_num_threads() << endl;
         cout << "Thread " << omp_get_thread_num() << " is running" << endl;
         for (i = 0; i < MATRIX_SIZE; i++) {
 #pragma omp parallel for reduction (+:sum)
