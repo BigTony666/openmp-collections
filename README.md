@@ -1,7 +1,7 @@
 <h1 align="center">
-  openmp-collections
+  Parallel Computing
 </h1>
 
 <div align="center">
-  A collection of programs using OpenMP in C++
+  A collection of parallel programming implemented in OpenMP, pthreads and MPI
 </div>
